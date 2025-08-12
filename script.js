@@ -405,16 +405,21 @@ statItems.forEach((item, index) => {
 
 // Add interactive portfolio hover effects
 portfolioItems.forEach(item => {
-    const image = item.querySelector('.portfolio-image');
+    const imageContainer = item.querySelector('.portfolio-image');
+    const image = item.querySelector('.portfolio-image img');
     const content = item.querySelector('.portfolio-content');
     
     item.addEventListener('mouseenter', () => {
-        image.style.transform = 'scale(1.1)';
+        if (image) {
+            image.style.transform = 'scale(1.1)';
+        }
         content.style.transform = 'translateY(-10px)';
     });
     
     item.addEventListener('mouseleave', () => {
-        image.style.transform = 'scale(1)';
+        if (image) {
+            image.style.transform = 'scale(1)';
+        }
         content.style.transform = 'translateY(0)';
     });
 });
@@ -422,7 +427,7 @@ portfolioItems.forEach(item => {
 // Add CSS transitions for portfolio effects
 const portfolioStyle = document.createElement('style');
 portfolioStyle.textContent = `
-    .portfolio-image {
+    .portfolio-image img {
         transition: transform 0.3s ease;
     }
     
@@ -521,3 +526,36 @@ formLabelStyle.textContent = `
     }
 `;
 document.head.appendChild(formLabelStyle);
+
+// Add interactive effects for tech cards in about section
+const techCards = document.querySelectorAll('.tech-card');
+techCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.transform = 'scale(1.1) rotate(10deg)';
+        card.style.boxShadow = '0 20px 40px rgba(37, 99, 235, 0.3)';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'scale(1) rotate(0deg)';
+        card.style.boxShadow = 'none';
+    });
+});
+
+// Add parallax effect for tech background elements
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const techCircles = document.querySelectorAll('.tech-circle');
+    const aboutSection = document.querySelector('.about-section');
+    
+    if (aboutSection) {
+        const rect = aboutSection.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        
+        if (isVisible) {
+            techCircles.forEach((circle, index) => {
+                const speed = 0.5 + (index * 0.1);
+                circle.style.transform = `translateY(${scrolled * speed * 0.1}px) rotate(${scrolled * 0.02}deg)`;
+            });
+        }
+    }
+});
