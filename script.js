@@ -219,36 +219,7 @@ portfolioItems.forEach((item, index) => {
     item.style.animationDelay = `${index * 0.2}s`;
 });
 
-// Add interactive cursor effect
-const cursor = document.createElement('div');
-cursor.style.cssText = `
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s ease;
-    mix-blend-mode: difference;
-`;
-document.body.appendChild(cursor);
 
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX - 10 + 'px';
-    cursor.style.top = e.clientY - 10 + 'px';
-});
-
-// Add hover effect to cursor
-document.querySelectorAll('a, button, .service-card, .portfolio-item').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'scale(2)';
-    });
-    
-    el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'scale(1)';
-    });
-});
 
 // Add scroll-triggered animations for sections
 const sections = document.querySelectorAll('.section');
