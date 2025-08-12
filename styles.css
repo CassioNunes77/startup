@@ -655,6 +655,8 @@ html {
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
+    position: relative;
+    z-index: 2;
 }
 
 .portfolio-image::before {
@@ -666,6 +668,7 @@ html {
     bottom: 0;
     background: linear-gradient(45deg, rgba(0,0,0,0.3), transparent);
     z-index: 1;
+    pointer-events: none;
 }
 
 .portfolio-item:hover .portfolio-image img {
