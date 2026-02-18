@@ -32,8 +32,8 @@
     --gray-700: #334155;
     
     /* Typography */
-    --font-display: 'Syne', sans-serif;
-    --font-body: 'Outfit', sans-serif;
+    --font-display: 'DM Sans', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
     
     /* Transitions */
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -49,17 +49,6 @@ body {
     background: var(--deep-blue);
     color: var(--gray-100);
     overflow-x: hidden;
-}
-
-@media (pointer: fine) {
-    body {
-        cursor: none;
-    }
-}
-
-body.no-cursor,
-body:has(.cursor-follower.hidden) {
-    cursor: auto;
 }
 
 /* ========== Preloader ========== */
@@ -87,8 +76,8 @@ body:has(.cursor-follower.hidden) {
 .preloader-logo {
     font-family: var(--font-display);
     font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 800;
-    letter-spacing: 0.2em;
+    font-weight: 700;
+    letter-spacing: 0.15em;
     background: linear-gradient(135deg, var(--cyan), var(--violet));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -114,23 +103,6 @@ body:has(.cursor-follower.hidden) {
 
 @keyframes preloadProgress {
     to { width: 100%; }
-}
-
-/* ========== Cursor ========== */
-.cursor-follower {
-    width: 20px;
-    height: 20px;
-    border: 1px solid var(--cyan);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.15s ease, opacity 0.2s ease;
-    mix-blend-mode: difference;
-}
-
-.cursor-follower.hidden {
-    opacity: 0;
 }
 
 /* ========== Navigation ========== */
@@ -161,7 +133,7 @@ body:has(.cursor-follower.hidden) {
 .nav-logo {
     font-family: var(--font-display);
     font-size: 1.5rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 0.15em;
     color: var(--white);
     text-decoration: none;
@@ -316,10 +288,10 @@ body:has(.cursor-follower.hidden) {
 
 .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
     margin-bottom: 1.5rem;
 }
 
@@ -480,7 +452,7 @@ body:has(.cursor-follower.hidden) {
 .app-number {
     font-family: var(--font-display);
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--cyan);
     opacity: 0.8;
 }
@@ -488,7 +460,7 @@ body:has(.cursor-follower.hidden) {
 .app-name {
     font-family: var(--font-display);
     font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 700;
+    font-weight: 600;
     color: var(--white);
     min-width: 200px;
 }
@@ -582,7 +554,7 @@ body:has(.cursor-follower.hidden) {
     display: block;
     font-family: var(--font-display);
     font-size: 3rem;
-    font-weight: 800;
+    font-weight: 700;
     background: linear-gradient(135deg, var(--cyan), var(--violet));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -649,7 +621,7 @@ body:has(.cursor-follower.hidden) {
 .footer-logo {
     font-family: var(--font-display);
     font-size: 1.25rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 0.15em;
     color: var(--white);
     text-decoration: none;
@@ -699,14 +671,6 @@ body:has(.cursor-follower.hidden) {
 
 /* ========== Responsive ========== */
 @media (max-width: 768px) {
-    body {
-        cursor: auto;
-    }
-    
-    .cursor-follower {
-        display: none;
-    }
-    
     .nav-menu {
         position: fixed;
         top: 0;

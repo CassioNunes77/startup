@@ -6,56 +6,17 @@
 // ========== Preloader ==========
 const preloader = document.getElementById('preloader');
 
-window.addEventListener('load', () => {
+if (preloader) {
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+        }, 1200);
+    });
     setTimeout(() => {
-        preloader.classList.add('hidden');
-        if ('ontouchstart' in window) document.body.classList.add('no-cursor');
-    }, 1200);
-});
-
-// Fallback if load is fast
-setTimeout(() => {
-    if (preloader && !preloader.classList.contains('hidden')) {
-        preloader.classList.add('hidden');
-    }
-}, 2500);
-
-// Ensure cursor doesn't block on touch devices
-if ('ontouchstart' in window) {
-    document.body.classList.add('no-cursor');
-}
-
-// ========== Custom Cursor (desktop only) ==========
-const cursorFollower = document.getElementById('cursor-follower');
-
-if (window.matchMedia('(pointer: fine)').matches) {
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        if (cursorFollower) cursorFollower.classList.remove('hidden');
-    });
-
-    document.addEventListener('mouseleave', () => {
-        if (cursorFollower) cursorFollower.classList.add('hidden');
-    });
-
-    function animateCursor() {
-        cursorX += (mouseX - cursorX) * 0.15;
-        cursorY += (mouseY - cursorY) * 0.15;
-        if (cursorFollower) {
-            cursorFollower.style.left = cursorX + 'px';
-            cursorFollower.style.top = cursorY + 'px';
-            cursorFollower.style.transform = `translate(-50%, -50%)`;
+        if (!preloader.classList.contains('hidden')) {
+            preloader.classList.add('hidden');
         }
-        requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-} else {
-    document.body.classList.add('no-cursor');
-    if (cursorFollower) cursorFollower.classList.add('hidden');
+    }, 2500);
 }
 
 // ========== Navbar Scroll ==========
